@@ -31,15 +31,27 @@ class Student:
             'score': self.score,
             'grade': self.grade
         }
-name1=input("enter the name: ")
-score1=int(input("enter the score: "))
-name2=input("enter the name: ")
-score2=int(input("enter the score: "))
 
-student1 = Student(name1,score1)
-student2 = Student(name2,score2)
+def get_valid_score():
+    while True:
+        try:
+            score = int(input("Enter the score (0-100): "))
+            if 0 <= score <= 100:
+                return score
+            else:
+                print("Invalid mark! Please enter a score between 0 and 100.")
+        except ValueError:
+            print("Invalid input! Please enter a valid integer score.")
 
-print("Student 1:")
+name1 = input("Enter the name: ")
+score1 = get_valid_score()
+name2 = input("Enter the name: ")
+score2 = get_valid_score()
+
+student1 = Student(name1, score1)
+student2 = Student(name2, score2)
+
+print("\nStudent 1:")
 student1.display()
 print("\nStudent 2:")
 student2.display()
